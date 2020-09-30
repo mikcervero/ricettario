@@ -22,15 +22,16 @@ pipeline {
         }
       }
     }
-}
-stage('Deploy on k8s') {
+  }
+    stage('Deploy on k8s') {
       steps {
-        {
+        
           sh "kubectl create namespace jdk"
-          sh "kubectl apply -f -n jdk Deployment.yaml"
-          sh "kubectl apply -f -n jdk Service.yaml"
-}
+          sh "kubectl apply -f Deployment.yaml"
+          sh "kubectl apply -f Service.yaml"
+
       }
   }
-}
+
+ }
 }
