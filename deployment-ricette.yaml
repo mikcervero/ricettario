@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ricettario
+  namespace: jdk
+  labels:
+    app: backend
+    service: ricette
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+      service: ricette
+  template:
+    metadata:
+      labels:
+        app: backend
+        service: ricette
+    spec:
+      containers:
+      - name: jdk-ricette
+        image: cmik/jdkricette:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
